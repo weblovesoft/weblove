@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weblovesoft - Web Designing & Hosting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Weblovesoft Logo" class="logo">
+        <h1>Weblovesoft</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="home-section">
+        <div class="home-overlay">
+            <h2>Welcome to Weblovesoft</h2>
+            <p>Innovating web solutions for businesses and individuals.</p>
+            <a href="#services" class="btn">Explore Our Services</a>
+        </div>
+    </section>
+
+    <section id="vision-mission">
+        <h2>Our Vision</h2>
+        <p>To be a leading web solutions provider, transforming businesses with innovative designs and technology.</p>
+
+        <h2>Our Mission</h2>
+        <p>Empowering businesses with affordable, high-quality web development and hosting services.</p>
+
+        <h2>Why We Started Weblovesoft?</h2>
+        <p>We saw the need for cost-effective, professional web solutions. Our goal is to help businesses establish their online presence effortlessly.</p>
+    </section>
+    
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Weblovesoft is dedicated to providing professional web design and hosting services at affordable prices.</p>
+    </section>
+    
+    <section id="services">
+        <h2>Our Services</h2>
+        <ul>
+            <li>Website Design</li>
+            <li>Hosting Services</li>
+            <li>SEO Optimization</li>
+            <li>Domain Registration</li>
+        </ul>
+    </section>
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: weblovesoft@gmail.com</p>
+        <p>Phone: +91 7013814450</p>
+        
+        <h3>Get in Touch</h3>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+	    <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Weblovesoft. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+	    let phone = document.getElementById("phone").value;
+            let message = document.getElementById("message").value;
+            
+            let telegramBotToken = "7572916891:AAHR4TpBnYqthcoRi4fRd94H_XpIuQ45rrs";
+            let chatId = "1583639508";
+            
+            let telegramMessage = `New Contact Form Submission:\nName: ${name}\nEmail: ${email}nPhone: ${phone}\nMessage: ${message}`;
+            
+            let url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(telegramMessage)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Telegram API Response:", data);
+                    if (data.ok) {
+                        alert("Message sent successfully!");
+                        document.getElementById("contactForm").reset();
+                    } else {
+                        alert("Error: " + data.description);
+                    }
+                })
+                .catch(error => {
+                    console.error("Fetch Error:", error);
+                    alert("Network error, please check the console.");
+                });
+        });
+    </script>
+</body>
+</html>
