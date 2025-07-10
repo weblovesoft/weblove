@@ -132,6 +132,89 @@ section {
     font-size: 18px;
     line-height: 1.6;
 }
+.ceo-profile {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.ceo-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff9800;
+}
+
+.ceo-details {
+    max-width: 600px;
+    text-align: left;
+}
+
+.ceo-details h3 {
+    color: #ff9800;
+    margin: 0;
+    font-size: 24px;
+}
+
+.ceo-details p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Clients Section */
+.clients-section {
+    padding: 50px;
+    background: #2c2c2c;
+    text-align: center;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1100px;
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.client-card {
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.05);
+    transition: transform 0.3s ease;
+}
+
+.client-card:hover {
+    transform: scale(1.05);
+    background: #ff9800;
+    color: #121212;
+}
+
+.client-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: white;
+    padding: 10px;
+}
+
+.client-card h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
 
 /* Services Section */
 #services ul {
@@ -195,6 +278,79 @@ section {
 }
 
 #contact button:hover {
+    background: #e65100;
+}
+
+#careers {
+    background: #2c2c2c;
+    padding: 50px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 900px;
+    text-align: center;
+}
+
+.job-listing {
+    background: #1b263b;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 6px;
+    color: white;
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
+}
+
+.btn {
+    display: inline-block;
+    background: #ff9800;
+    color: #121212;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #e65100;
+}
+
+/* Application Form */
+#apply-form {
+    background: #1e1e1e;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.05);
+}
+
+#apply-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#apply-form input,
+#apply-form textarea {
+    background: #1b263b;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#apply-form button {
+    background: #ff9800;
+    color: #121212;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#apply-form button:hover {
     background: #e65100;
 }
 

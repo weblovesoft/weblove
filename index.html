@@ -16,9 +16,11 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Us</a></li>
+	    <li><a href="#clients">Our Clients</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact Us</a></li>
 	    <li><a href="#contact">Submit a ticket</a></li>
+	    <li><a href="#Careers">Careers</a></li>
         </ul>
     </nav>
     
@@ -44,7 +46,40 @@
     <section id="about" class="about-section">
         <h2>About Us</h2>
         <p>Weblovesoft is dedicated to providing professional web design and hosting services at affordable prices.</p>
+	<div class="ceo-profile">
+        <img src="ceo.jpeg" alt="CEO Photo">
+        <div class="ceo-details">
+            <h3>JayaRaj Gudavarthi</h3>
+            <p><strong>Founder & CEO, Weblovesoft</strong></p>
+            <p>JayaRaj Gudavarthi is a visionary entrepreneur with a strong passion for technology and digital empowerment. He started Weblovesoft with the mission to deliver high-quality, affordable web solutions to startups, small businesses, and individuals across India.</p>
+            <p><strong>Contact:</strong> weblovesoft@gmail.com</p>
+        </div>
+    </div>
     </section>
+    <section id="clients" class="clients-section">
+    <h2>Our Clients</h2>
+    <p>We’re proud to have worked with a diverse range of clients. Here are a few of them:</p>
+
+    <div class="clients-grid">
+        <div class="client-card">
+            <img src="client1.png" alt="Client 1">
+            <h4>Desi Chai & MP Dosa Corner</h4>
+        </div>
+        <div class="client-card">
+            <img src="client2.png" alt="Client 2">
+            <h4>Pavan Montessori House of children</h4>
+        </div>
+        <div class="client-card">
+            <img src="client3.png" alt="Client 3">
+            <h4>SS College of Pharmacy</h4>
+        </div>
+        <div class="client-card">
+            <img src="client4.png" alt="Client 4">
+            <h4>Hebbal party and convention hall</h4>
+        </div>
+    </div>
+</section>
+
     
     <section id="services">
         <h2>Our Services</h2>
@@ -54,6 +89,35 @@
             <li>SEO Optimization</li>
             <li>Domain Registration</li>
         </ul>
+    </section>
+    <section id="Careers">
+        <h2>Join Our Team</h2>
+        <p>We're looking for passionate individuals to join our mission of delivering affordable, quality web services.</p>
+
+        <div class="job-listing">
+            <h3>Feild Sales officer</h3>
+            <p><strong>Location: Remote</strong> Remote</p>
+            <p>Required a quailified feild sales officer who can works remotly.</p>
+            <a href="#apply-form" class="btn">Apply Now</a>
+        </div>
+
+        <div class="job-listing">
+            <h3>Lead sales officer</h3>
+            <p><strong>Location: Remote</strong> Bangalore</p>
+            <p>Responsible for promoting Weblovesoft services to clients online and offline and generate Leads and convert to sales.</p>
+            <a href="#apply-form" class="btn">Apply Now</a>
+        </div>
+    </section>
+
+    <section id="apply-form">
+        <h3>Application Form</h3>
+        <form id="jobForm">
+            <input type="text" id="applicant-name" name="name" placeholder="Full Name" required>
+            <input type="email" id="applicant-email" name="email" placeholder="Email" required>
+            <input type="tel" id="applicant-phone" name="phone" placeholder="Phone Number" required>
+            <textarea id="applicant-message" name="message" placeholder="Tell us about yourself..." required></textarea>
+            <button type="submit">Submit Application</button>
+        </form>
     </section>
     
     <section id="contact">
@@ -78,11 +142,6 @@
             <button type="submit">Send Message</button>
         </form>
     </section>
-    
-    <footer>
-        <p>&copy; 2025 Weblovesoft. All rights reserved.</p>
-    </footer>
-
     <script>
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
@@ -113,6 +172,45 @@
                 .catch(error => {
                     console.error("Fetch Error:", error);
                     alert("Network error, please check the console.");
+                });
+        });
+    </script>
+
+
+
+    <footer>
+        <p>&copy; 2025 Weblovesoft. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("jobForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("applicant-name").value;
+            let email = document.getElementById("applicant-email").value;
+            let phone = document.getElementById("applicant-phone").value;
+            let message = document.getElementById("applicant-message").value;
+
+            let telegramBotToken = "7572916891:AAHR4TpBnYqthcoRi4fRd94H_XpIuQ45rrs";
+            let chatId = "1583639508";
+
+            let telegramMessage = `📄 *New Job Application*\n\n👤 Name: ${name}\n📧 Email: ${email}\n📱 Phone: ${phone}\n📝 About: ${message}`;
+
+            let url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(telegramMessage)}&parse_mode=Markdown`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert("Application sent successfully!");
+                        document.getElementById("jobForm").reset();
+                    } else {
+                        alert("Error: " + data.description);
+                    }
+                })
+                .catch(error => {
+                    alert("Network error. Check console.");
+                    console.error("Fetch Error:", error);
                 });
         });
     </script>
